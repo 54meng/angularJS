@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/angular.js" ></script>
+		<style>
+			body{
+				font-size: 12px;
+			}
+			ul{
+				list-style: none;
+				width: 608px;
+				margin: 0px;
+				padding: 0px;
+			}
+			ul li{
+				float: left;
+				padding: 5px 0px;
+			}
+			ul .odd{
+				color: #0026ff;
+			}
+			ul .even{
+				color: #ff0000;
+			}
+			ul .bold{
+				font-weight: bold;
+			}
+			ul li span{
+				width: 52px;
+				float: left;
+				padding: 0px 10px;
+			}
+			ul .focus{
+				background-color: #cccccc;
+			}
+		</style>
+	</head>
+	<body ng-app="demo">
+		<div ng-controller="demoController">
+			<ul>
+				<li ng-class="{{bold}}">
+					<span>序号</span>
+					<span>姓名</span>
+					<span>性别</span>
+					<span>年龄</span>
+					<span>分数</span>
+				</li>
+				<li ng-repeat=" stu in data | young:0" ng-class-odd="'odd'" ng-class-even="'even'">
+					<span>{{$index+1}}</span>
+					<span>{{stu.name}}</span>
+					<span>{{stu.sex}}</span>
+					<span>{{stu.age}}</span>
+					<span>{{stu.score}}</span>
+				</li>
+			</ul>
+		</div>
+		<script>
+			var mydemo = angular.module('demo', []);
+			mydemo.controller('demoController',['$scope', function($scope){
+				$scope.bold = "bold";
+				$scope.data = [
+					{name:"张明明", sex:"男", age: 22, score :95},
+					{name:"李玲玉", sex:"女", age: 24, score :90},
+					{name:"刘小华", sex:"男", age: 27, score :97},
+					{name:"刘丽珍", sex:"女", age: 21, score :99},
+				];
+			}]);
+			mydemo.filter('young', function(){
+				return function(e, type){
+					var _out = [];
+					var _sex = type ? "男" : "女";
+					for(i = 0; i < e.length; i++){
+						if (e[i].age > 20 && e[i].age <28 && e[i].sex == _sex)
+						_out.push(e[i]);
+					}
+					return _out;
+				}
+				
+			});
+		</script>
+	</body>
+</html>

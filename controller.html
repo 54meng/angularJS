@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="demo">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-controller="democontroller">
+			<p>{{name}}</p>
+		</div>
+		<div ng-controller="testcontroller">
+			<p>{{user}}</p>
+		</div>
+		<script type="text/javascript" src="js/angular.js" ></script>
+		<script>
+			angular.module('demo',[])
+			.controller('democontroller',['$scope',function($scope){
+				$scope.name = "系统故障，请从新输入"
+			}])
+			.controller('testcontroller',['$scope',function($scope){
+				$scope.user = "JS故障，请从新输入"
+			}])
+		</script>
+	</body>
+</html>

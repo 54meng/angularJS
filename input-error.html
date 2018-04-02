@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/angular.js" ></script>
+	</head>
+	<body ng-app="demo">
+		<form name="temp_form" action="" method="post" ng-submit="save()" ng-controller="democontroller">
+			<div>
+				<input name="username" ng-model="name" type="text" required="required" />
+				<span ng-show="temp_form.username.$error.required">姓名不能为空</span>
+			</div>
+			<div>
+				<input name="useremail" ng-model="email"  type="email" required="required"/>
+				<span ng-show="temp_form.useremail.$error.required">邮箱不能为空</span>
+				<span ng-show="temp_form.useremail.$error.email">邮箱格式不正确</span>
+			</div>
+			<input type="submit" value="提交" ng-disabled="temp_form.$invalid"/>
+		</form>
+		<script>
+			angular.module('demo', [])
+			 .controller('democontroller',['$scope',function($scope){
+			 	$scope.name = "丘艳";
+			 	$scope.enail = "284690417@qq.com";
+			 	$scope.save = function(){
+			 		console.log("提交成功");
+			 	};
+			 }]);
+		</script>
+	</body>
+</html>

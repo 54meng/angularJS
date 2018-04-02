@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>在事件中绑定$scope对象</title>
+		<script type="text/javascript" src="js/angular.js" ></script>
+	</head>
+	<body ng-app="demo">
+		<div id="" ng-controller="scopecontroller">
+			<span>{{value}}</span>
+			<input type="button" ng-click="click_show()" value="显示"/>
+			<input type="button" ng-click="click_para('点击了带参数的按钮');" value="带参数显示" />
+		</div>
+		<script>
+			angular.module('demo',[])
+			.controller('scopecontroller',['$scope',function($scope){
+				$scope.value = "得不到的永远在骚动";
+				$scope.click_show = function(){
+					$scope.value = "是否说爱都太过沉重";
+				};
+				//带参数
+				$scope.click_para = function(petxt){
+					$scope.value = petxt;
+				}
+			}])
+		</script>
+	</body>
+</html>

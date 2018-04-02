@@ -2,17 +2,17 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>ng-repeat</title>
 		<script type="text/javascript" src="js/angular.js" ></script>
 	</head>
-		<body ng-app="demo">
+	<body ng-app="demo">
 		<style>
 			body{
 				font-size: 12px;
 			}
 			ul{
 				list-style:none;
-				width: 608px;
+				width: 408px;
 				margin: 0;
 				padding: 0;
 			}
@@ -44,15 +44,13 @@
 				<span>序号</span>
 				<span>姓名</span>
 				<span>性别</span>
-				<span>分数</span>
 				<span>是否首条</span>
 				<span>是否尾条</span>
 				</li>
-				<li ng-class-odd="'odd'" ng-class-even="'even'" ng-repeat="stu in data | orderBy: '-score' |limitTo : 3" ng-click="demo_click($index)" ng-class="{focus:$index == focus}">
+				<li ng-class-odd="'odd'" ng-class-even="'even'" ng-repeat="stu in data" ng-click="demo_click($index)" ng-class="{focus:$index == focus}">
 					<span>{{$index+1}}</span>
 					<span>{{stu.name}}</span>
 					<span>{{stu.sex}}</span>
-					<span>{{stu.score}}</span>
 					<span>{{$first?'是':'否'}}</span>
 					<span>{{$last?'是':'否'}}</span>
 				</li>
@@ -66,10 +64,10 @@
 					$scope.focus = i;
 				};
 				$scope.data = [
-					{name:"张明明",sex:"女",score:95},
-					{name:"李清思",sex:"女",score:97},
-					{name:"刘小华",sex:"男",score:98},
-					{name:"陈忠忠",sex:"男",score:99},
+					{name:"张明明",sex:"女"},
+					{name:"李清思",sex:"女"},
+					{name:"刘小华",sex:"男"},
+					{name:"陈忠忠",sex:"男"},
 				];
 			}]);
 		</script>

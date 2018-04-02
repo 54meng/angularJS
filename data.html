@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="data">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/angular.js" ></script>
+	</head>
+	<body>
+		<h3>列表绑定多项数据</h3>
+		<div ng-controller="stucontroller">
+			<ul>
+				<li ng-repeat="stu in data">
+					<span>{{stu.name}}</span>
+					<span>{{stu.sex}}</span>
+					<span>{{stu.age}}</span>
+					<span>{{stu.score}}</span>
+				</li>
+			</ul>
+		</div>
+		
+		<script type="text/javascript">
+			angular.module('data', [])
+			  .controller('stucontroller',['$scope', function($scope){
+			  	$scope.data = [
+				{name:"张三",sex:"男",age:24,score:100},
+				{name:"李四",sex:"男",age:21,score:100},
+				{name:"王五",sex:"男",age:22,score:100},
+				];
+			  }]);
+				
+			
+			
+			
+		</script>
+	</body>
+</html>
